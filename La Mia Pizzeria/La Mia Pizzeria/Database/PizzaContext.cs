@@ -8,6 +8,7 @@ namespace La_Mia_Pizzeria.Database
     public class PizzaContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<PizzaModel> Pizze { get; set; }
+        public DbSet<DrinksModel> Bevande { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

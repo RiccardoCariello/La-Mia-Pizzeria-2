@@ -4,6 +4,7 @@ using La_Mia_Pizzeria.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace La_Mia_Pizzeria.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    partial class PizzaContextModelSnapshot : ModelSnapshot
+    [Migration("20230524151139_DrinksCreate")]
+    partial class DrinksCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,40 +24,6 @@ namespace La_Mia_Pizzeria.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("La_Mia_Pizzeria.Models.DrinksModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(400)
-                        .HasColumnType("text");
-
-                    b.Property<string>("ImgSource")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<float>("Liters")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Bevande");
-                });
 
             modelBuilder.Entity("La_Mia_Pizzeria.Models.PizzaModel", b =>
                 {
