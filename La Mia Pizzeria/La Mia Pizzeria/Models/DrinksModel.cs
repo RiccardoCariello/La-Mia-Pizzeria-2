@@ -45,6 +45,7 @@ namespace La_Mia_Pizzeria.Models
             this.ImgSource = imgSource;
             this.Price = price;
             this.Liters = liters;
+
         }
 
         public DrinksModel()
