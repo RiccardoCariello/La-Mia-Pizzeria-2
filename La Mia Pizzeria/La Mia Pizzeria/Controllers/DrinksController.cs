@@ -41,9 +41,65 @@ namespace La_Mia_Pizzeria.Controllers
             }
         }
 
+        [HttpGet]
+
+        public IActionResult Update(int id)
+        {
+            using (PizzaContext db = new PizzaContext())
+            {
+                DrinksModel? drinksToModify = db.Bevande.Where(DrinksModel => DrinksModel.Id == id).FirstOrDefault();
+                if (drinksToModify != null)
+                {
+
+                    return View("Update", drinksToModify);
+
+                }
+                else
+                {
+                    return NotFound($"la bevanda con id {id} non è stato trovato!");
 
 
+                }
 
+
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, DrinksModel newDrinks)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Update", newDrinks);
+            }
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                DrinksModel? DrinksToModify = db.Bevande.Where(DrinksModel => DrinksModel.Id == id).FirstOrDefault();
+
+                if (DrinksToModify != null)
+                {
+                    DrinksToModify.Name = newDrinks.Name;
+                    DrinksToModify.Description = newDrinks.Description; 
+                    DrinksToModify.ImgSource = newDrinks.ImgSource;
+                    DrinksToModify.Price = newDrinks.Price;
+                    DrinksToModify.Liters = newDrinks.Liters;
+                 
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound(" La bottiglia da modificare non esiste!");
+                }
+
+
+            }
+
+        }
 
     }
 }
