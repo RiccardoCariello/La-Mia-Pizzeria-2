@@ -8,6 +8,6 @@ namespace La_Mia_Pizzeria.Controllers
        public IActionResult index()
         {
             return View();
-        }
+        }//jhjh
     }
 }
