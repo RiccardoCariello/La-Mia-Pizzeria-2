@@ -17,7 +17,33 @@ namespace La_Mia_Pizzeria.Controllers
         }
 
 
-       
+        [HttpGet]
+        public IActionResult Create() {
+        
+        return View();
+        
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Create(DrinksModel newDrinks)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("Create", newDrinks);
+            }
+            using(PizzaContext dbs = new PizzaContext())
+            {
+                dbs.Bevande.Add(newDrinks);
+                dbs.SaveChanges();
+                return RedirectToAction("Index");   
+            }
+        }
+
+
+
+
 
     }
 }
