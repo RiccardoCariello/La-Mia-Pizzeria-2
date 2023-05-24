@@ -33,12 +33,18 @@ namespace La_Mia_Pizzeria.Models
 
         public float Price { get; set; }
 
-        public DrinksModel(string name, string description, string imgSource, float price)
+
+        [Required(ErrorMessage = "Il campo è obbligatorio.")]
+        [Range(0.5f, 10, ErrorMessage = "La capienza della bevanda non può essere inferiore a 0,5 litri, nè maggiore di 10 litri.")]
+        public float Liters { get; set; }
+
+        public DrinksModel(string name, string description, string imgSource, float price, float liters)
         {
             this.Name = name;
             this.Description = description;
             this.ImgSource = imgSource;
             this.Price = price;
+            this.Liters = liters;
         }
 
         public DrinksModel()
