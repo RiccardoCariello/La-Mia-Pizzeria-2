@@ -12,7 +12,7 @@ namespace La_Mia_Pizzeria.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=EFPizzeria;" +
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=EFPizzeriaaa;" +
                 "Integrated Security=True;TrustServerCertificate=True");
         }
     }
