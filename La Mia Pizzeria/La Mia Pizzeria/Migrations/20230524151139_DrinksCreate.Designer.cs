@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace La_Mia_Pizzeria.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20230524150443_DrinksCreate")]
+    [Migration("20230524151139_DrinksCreate")]
     partial class DrinksCreate
     {
         /// <inheritdoc />
